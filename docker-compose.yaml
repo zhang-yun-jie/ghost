@@ -12,7 +12,7 @@ services:
       database__connection__user: root
       database__connection__password: ghost
       database__connection__database: ghost
-      url: https://zhangyunjie.com.cn:9000
+      url: https://xxx
       NODE_ENV: production
     volumes:
       - /root/docker/ghost/data:/var/lib/ghost/content
