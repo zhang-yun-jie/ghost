@@ -2,7 +2,7 @@ services:
 
   ghost:
     image: ghost:latest
-    container_name: gh_ghost
+    container_name: ghost-yun
     restart: always
     ports:
       - 9000:2368
@@ -12,14 +12,14 @@ services:
       database__connection__user: root
       database__connection__password: ghost
       database__connection__database: ghost
-      url: https://xxx
+      url: http://localhost:9000
       NODE_ENV: production
     volumes:
-      - /root/docker/ghost/data:/var/lib/ghost/content
+      - /docker/ghost-yun/data:/var/lib/ghost/content
 
   db:
     image: mysql:5.7
-    container_name: gh_mysql
+    container_name: ghost-mysql-yun
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ghost
@@ -27,4 +27,4 @@ services:
       MYSQL_USER: ghost
       MYSQL_PASSWORD: ghost
     volumes:
-      - /root/docker/ghost/mysql:/var/lib/mysql
+      - /docker/ghost-yun/mysql:/var/lib/mysql
