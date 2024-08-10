@@ -1,0 +1,30 @@
+services:
+
+  ghost:
+    image: ghost:latest
+    container_name: gh_ghost
+    restart: always
+    ports:
+      - 9000:2368
+    environment:
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: ghost
+      database__connection__database: ghost
+      url: https://zhangyunjie.com.cn:9000
+      NODE_ENV: production
+    volumes:
+      - /root/docker/ghost/data:/var/lib/ghost/content
+
+  db:
+    image: mysql:5.7
+    container_name: gh_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ghost
+      MYSQL_DATABASE: ghost
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: ghost
+    volumes:
+      - /root/docker/ghost/mysql:/var/lib/mysql
